@@ -14,14 +14,14 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 import en from '@angular/common/locales/en';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +33,8 @@ registerLocaleData(en);
     FormsModule,
     NzLayoutModule,
     NzMenuModule,
-    LayoutModule
+    LayoutModule,
+    CommonModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
