@@ -5,7 +5,7 @@ import { ReportListComponent } from './disciplinary-report/report-list/report-li
 import { ReportComponent } from './report.component';
 
 const routes: Routes = [
-  { path: '', component: ReportListComponent },
+  { path: '', component: ReportComponent },
   { path: 'report-list', component: ReportListComponent },
   { path: 'report-form/:id', component: ReportFormComponent},
 ];

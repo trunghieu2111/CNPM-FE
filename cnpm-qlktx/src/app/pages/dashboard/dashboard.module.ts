@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 
+import { AntDesignModule } from 'src/app/share/ant-design.module';
+
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { DashboardComponent } from './dashboard.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    AntDesignModule
   ]
 })
 export class DashboardModule { }

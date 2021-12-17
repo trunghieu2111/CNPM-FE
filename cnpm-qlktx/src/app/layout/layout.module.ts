@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
-import { LayoutModule } from './layout/layout.module';
+import { LayoutRoutingModule } from './layout-routing.module';
+import { LayoutComponent } from './layout.component';
+import { AntDesignModule } from '../share/ant-design.module';
 
-import { AppComponent } from './app.component';
-import { AntDesignModule } from './share/ant-design.module';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IconsProviderModule } from './icons-provider.module';
 import { FormsModule } from '@angular/forms';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -21,21 +18,19 @@ registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    LayoutComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
+    LayoutRoutingModule,
     AntDesignModule,
-    HttpClientModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    IconsProviderModule,
     FormsModule,
     NzLayoutModule,
-    NzMenuModule,
-    LayoutModule
+    NzMenuModule
   ],
+  exports: [LayoutComponent],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+  bootstrap: [LayoutComponent]
 })
-export class AppModule {}
+export class LayoutModule { }

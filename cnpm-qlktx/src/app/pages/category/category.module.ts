@@ -13,6 +13,10 @@ import { RoomFormComponent } from './room/room-form/room-form.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { StudentFormComponent } from './student/student-form/student-form.component';
 
+import { AntDesignModule } from 'src/app/share/ant-design.module';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,10 @@ import { StudentFormComponent } from './student/student-form/student-form.compon
   ],
   imports: [
     CommonModule,
-    CategoryRoutingModule
+    CategoryRoutingModule,
+    AntDesignModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CategoryModule { }
