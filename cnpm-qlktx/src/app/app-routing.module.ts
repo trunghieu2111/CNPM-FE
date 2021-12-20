@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import {BrowserModule} from "@angular/platform-browser";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {LayoutComponent} from "./layout/layout.component";
+import {LoginComponent} from "./layout/login/login.component";
 // import { LayoutComponent } from './layout/layout.component';
 //import { LayoutModule } from './layout/layout.module';
 
@@ -18,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), BrowserModule, BrowserAnimationsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
