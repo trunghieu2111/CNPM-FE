@@ -6,6 +6,9 @@ import { ReportComponent } from './report.component';
 import { ReportListComponent } from './disciplinary-report/report-list/report-list.component';
 import { ReportFormComponent } from './disciplinary-report/report-form/report-form.component';
 
+import { AntDesignModule } from 'src/app/share/ant-design.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { ReportFormComponent } from './disciplinary-report/report-form/report-fo
   ],
   imports: [
     CommonModule,
-    ReportRoutingModule
+    ReportRoutingModule,
+    AntDesignModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ReportModule { }

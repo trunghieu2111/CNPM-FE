@@ -1,1 +1,80 @@
-<p>report-form works!</p>
+<span style="font-size: 27px;">Thông tin biên bản</span>
+<br><br>
+<form nz-form [formGroup]="submitForm">
+    <div style="border-top: 2px solid #66CCFF;">
+
+        <div style="margin-top: 20px;">
+
+            <div class="form-group" nz-row>
+                <nz-form-item nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label nz-col nzSpan="6" nzFor="id" style="font-weight: bold;">Mã biên bản
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập mã sinh viên">
+                            <input nz-input type="text" formControlName="id">
+                        </nz-form-control>
+                    </div>
+                </nz-form-item>
+                <nz-form-item nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label nz-col nzSpan="10" nzFor="toanha" style="font-weight: bold;">Mã sinh viên
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập tòa nhà">
+                            <input nz-input type="text" formControlName="toanha">
+                        </nz-form-control>
+                    </div>
+                </nz-form-item>
+            </div>
+
+            <div class="form-group" nz-row>
+                <nz-form-label nz-col nzSpan="3" nzFor="giaphong" style="font-weight: bold;">Nội dung</nz-form-label>
+                <nz-form-control nz-col nzSpan="21" nzErrorTip="Chưa nhập giá phòng">
+                    <input nz-input type="text" formControlName="giaphong">
+                </nz-form-control>
+            </div><br>
+
+            <div class="form-group" nz-row>
+                <div nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label nz-col nzSpan="7" nzFor="giaphong" style="font-weight: bold;">Thời gian vi phạm
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="17" nzErrorTip="Chưa nhập giá phòng">
+                            <input nz-input type="date" placeholder="-Chọn ngày-" formControlName="giaphong">
+                        </nz-form-control>
+                    </div>
+                </div>
+            </div><br>
+
+            <div class="form-group" nz-row>
+                <nz-form-item nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label nz-col nzSpan="6" nzFor="tang" style="font-weight: bold;">Hình thức kỉ luật
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập tầng">
+                            <input nz-input type="text" formControlName="tang">
+                        </nz-form-control>
+                    </div>
+                </nz-form-item>
+                <nz-form-item nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label nz-col nzSpan="10" nzFor="sogiuong" style="font-weight: bold;">Thời gian kỉ luật
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập số giường">
+                            <input nz-input type="date" formControlName="sogiuong" placeholder="-Chọn ngày-">
+                        </nz-form-control>
+                    </div>
+                </nz-form-item>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<div style="position: relative; height: 50px; margin-top: 50px;">
+    <button class="luu" nz-button nzType="primary" (click)="onSubmit()">
+        Lưu
+    </button>
+    <button class="back" nz-button nzType="primary" (click)="back()">
+        Trở về
+    </button>
+</div>

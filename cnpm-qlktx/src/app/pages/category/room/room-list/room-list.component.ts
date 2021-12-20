@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServiceLogin } from 'src/app/services/service-login.service';
 import { RoomService } from '../room.service';
 
 @Component({
@@ -14,11 +15,15 @@ export class RoomListComponent implements OnInit {
   pageSize: number = 5;
   total: number = 0;
 
+  flagPer = 1;
+
   constructor(public roomService: RoomService,
+    public loginService: ServiceLogin,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+    this.flagPer = this.loginService.flagPermission
     this.loadData();
   }
   public loadData() {
@@ -50,4 +55,10 @@ export class RoomListComponent implements OnInit {
     //console.log(keyword);
   }
 
+  showRoomEmpty(){
+    this.roomService.getRoomEmpty().subscribe((data) => {
+      this.data = data;
+      this.total = this.data.length;
+    })
+  }
 }

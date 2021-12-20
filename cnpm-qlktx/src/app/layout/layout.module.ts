@@ -13,21 +13,25 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { BrowserModule } from '@angular/platform-browser';
 
+// import { SubLayoutComponent } from './sub-layout/sub-layout.component';
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    LayoutComponent
+    LayoutComponent,
+    // SubLayoutComponent
   ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
     AntDesignModule,
     BrowserAnimationsModule,
+    BrowserModule,
     FormsModule,
     NzLayoutModule,
-    NzMenuModule
+    NzMenuModule,
   ],
   exports: [LayoutComponent],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

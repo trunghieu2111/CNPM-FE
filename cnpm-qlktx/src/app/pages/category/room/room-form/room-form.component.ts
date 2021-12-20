@@ -46,18 +46,18 @@ export class RoomFormComponent implements OnInit {
   }
 
   public loadData(id: any) {
-    // this.roomService.getInfoRoomByID(id).subscribe((data) => {
-    //   this.submitForm.patchValue({
-    //     id: data.id,
-    //     toanha: data.toanha,
-    //     tang: data.tang,
-    //     sogiuong: data.sogiuong,
-    //     songuoitoida: data.songuoitoida,
-    //     giaphong: data.giaphong,
-    //     gioitinh: data.gioitinh
-    //   })
-    //   //console.log("data", data);
-    // });
+    this.roomService.getInfoRoomByID(id).subscribe((data) => {
+      this.submitForm.patchValue({
+        id: data.id,
+        toanha: data.toanha,
+        tang: data.tang,
+        sogiuong: data.sogiuong,
+        songuoitoida: data.songuoitoida,
+        giaphong: data.giaphong,
+        gioitinh: data.gioitinh
+      })
+      //console.log("data", data);
+    });
   }
 
   onSubmit(){

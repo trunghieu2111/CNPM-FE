@@ -13,6 +13,6 @@ export class AppComponent {
   ) { }
 
   chuyen(){
-    this.router.navigate(['layout']);
+    this.router.navigate(['dashboard']);
   }
 }

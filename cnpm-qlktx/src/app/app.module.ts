@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { LayoutModule } from './layout/layout.module';
+import { LoginModule } from './login/login.module';
 
 import { AppComponent } from './app.component';
 import { AntDesignModule } from './share/ant-design.module';
@@ -14,7 +15,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 
 registerLocaleData(en);
@@ -24,6 +25,7 @@ registerLocaleData(en);
     AppComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AntDesignModule,
     HttpClientModule,
@@ -33,7 +35,8 @@ registerLocaleData(en);
     FormsModule,
     NzLayoutModule,
     NzMenuModule,
-    LayoutModule
+    LayoutModule,
+    LoginModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
