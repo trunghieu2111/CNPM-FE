@@ -3,15 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {LayoutComponent} from "./layout/layout.component";
-import {LoginComponent} from "./layout/login/login.component";
 // import { LayoutComponent } from './layout/layout.component';
 //import { LayoutModule } from './layout/layout.module';
 
 const routes: Routes = [
-  // { path: '', pathMatch:'full', redirectTo: '/login' },
+  //{ path: '', pathMatch:'full', redirectTo: '/login' },
   // { path: '', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
-  // { path: '', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule) },
-  //{ path: '', component: AppComponent },
+  //{ path: '', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule) },
+  // { path: '', component: AppComponent },
   // { path: 'login', component: Login, pathMatch:'full', redirectTo: '/login' },
   // { path: 'layout', component: LayoutComponent }
   // { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
