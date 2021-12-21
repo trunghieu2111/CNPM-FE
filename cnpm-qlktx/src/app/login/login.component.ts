@@ -17,11 +17,11 @@ export class LoginComponent implements OnInit {
   ) { }
 
   chuyen(){
-    this.loginService.flagLogin = false;
-    this.flag = this.loginService.flagLogin;
-    this.router.navigate(['/layout']);
+    // this.loginService.flagLogin = false;
+    // this.flag = this.loginService.flagLogin;
+    this.router.navigate(['/category'], { replaceUrl: true }); 
 
-    this.loginService.flagPermission = 1;
+    // this.loginService.flagPermission = 1;
   }
 
   ngOnInit(): void {

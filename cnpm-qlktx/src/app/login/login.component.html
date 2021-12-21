@@ -1,11 +1,8 @@
-<div *ngIf="flag === true">
-    <div class="login">
-        <div class="form">
-          <h2>Hệ Thống Quản Lý Kí Túc Xá HNUE</h2>
-          <input type="text" placeholder="Username">
-          <input type="password" placeholder="Password">
-          <input type="submit" value="Sign In" class="submit" (click)="chuyen()">
-        </div>
-      </div>
+<div class="login">
+  <div class="form">
+    <h2>Hệ Thống Quản Lý Kí Túc Xá HNUE</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <input type="submit" value="Sign In" class="submit" (click)="chuyen()">
+  </div>
 </div>
-<app-layout *ngIf="flag === false"></app-layout>

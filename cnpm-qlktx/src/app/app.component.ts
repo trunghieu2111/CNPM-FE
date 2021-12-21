@@ -1,19 +1,16 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <router-outlet></router-outlet>
-  `,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // isCollapsed = false;
-  // constructor(
-  //   private router: Router,
-  // ) { }
+  isCollapsed = false;
+  constructor() {}
 
-  // chuyen(){
-  //   this.router.navigate(['dashboard']);
-  // }
+  ngOnInit() {
+
+  }
 }
+

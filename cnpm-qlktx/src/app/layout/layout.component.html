@@ -32,13 +32,21 @@
             </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="Báo cáo" nzIcon="book">
+      <li nz-submenu nzOpen nzTitle="Báo Cáo" nzIcon="book">
         <ul>
           <li nz-menu-item>
             <a routerLink="report/report-list">Báo cáo kỉ luật</a>
           </li>
         </ul>
       </li>
+
+      <!-- căn giữa <li> -->
+      <li nz-menu-item style="width: 70%; margin: auto; margin-top: 50px;">
+        <i nz-icon nzType="logout" [nzRotate] = 180></i>
+        <span><a style="color:brown;" routerLink="/login">Log Out</a></span>
+        
+      </li>
+
     </ul>
   </nz-sider>
   <nz-layout>
