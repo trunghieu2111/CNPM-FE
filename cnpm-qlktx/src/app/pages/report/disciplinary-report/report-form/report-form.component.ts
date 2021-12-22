@@ -3,6 +3,8 @@ import {Location} from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { recordService } from '../report.service';
+import { StudentService } from 'src/app/pages/category/student/student.service';
+import { IData } from '../data.model';
 
 @Component({
   selector: 'app-report-form',
@@ -13,26 +15,27 @@ export class ReportFormComponent implements OnInit {
 
   isShowCreateOrUpdate: boolean= false; //false: tạo, true: sửa
   ids = this.route.snapshot.paramMap.get('id');
-
-  selectedValue = null;
-  sexs = ['Nam', 'Nữ'];
   
   submitForm: FormGroup;
+
+  dataSV:IData[] = [];
+  selectedValue = "";
+  SVIDs = [] as any;
 
   constructor(
     private _location: Location,
     private route: ActivatedRoute,
     public reportService: recordService,
+    public studentService: StudentService,
     public fb: FormBuilder,
   ) {
     this.submitForm = this.fb.group({
       id: [null, [Validators.required]],
-      toanha: [null, Validators.required],
-      tang: [null, [Validators.required]],
-      sogiuong: [null, Validators.required],
-      songuoitoida: [null, Validators.required],
-      giaphong: [null, Validators.required],
-      gioitinh: [null, Validators.required]
+      sinhvienid: [null, Validators.required],
+      noidungvipham: [null, [Validators.required]],
+      thoigianvipham: [null, Validators.required],
+      hinhthuckiluat: [null, Validators.required],
+      thoigiankiluat: [null, Validators.required]
     })
   }
 
@@ -43,20 +46,31 @@ export class ReportFormComponent implements OnInit {
       this.isShowCreateOrUpdate = true;
       this.loadData(this.ids);
     }
+
+    this.studentService.getListStudent().subscribe((data) => {
+      this.dataSV = data;
+      //console.log("test", this.dataSV);
+      for(const i in this.dataSV){
+        this.SVIDs.push(this.dataSV[i].id);
+      }
+      // console.log("dataID:", this.SVIDs);
+    })
+    
   }
 
   public loadData(id: any) {
     this.reportService.getInforecordByID(id).subscribe((data) => {
       this.submitForm.patchValue({
         id: data.id,
-        toanha: data.toanha,
-        tang: data.tang,
-        sogiuong: data.sogiuong,
-        songuoitoida: data.songuoitoida,
-        giaphong: data.giaphong,
-        gioitinh: data.gioitinh
+        sinhvienid: data.sinhvienid,
+        noidungvipham: data.noidungvipham,
+        thoigianvipham: data.thoigianvipham,
+        hinhthuckiluat: data.hinhthuckiluat,
+        thoigiankiluat: data.thoigiankiluat
       })
       //console.log("data", data);
+      //console.log("data:", data.sinhvienid);
+      this.selectedValue = data.sinhvienid + "";
     });
   }
 
@@ -67,12 +81,11 @@ export class ReportFormComponent implements OnInit {
         const params = {
           _id: this.ids,
           id: this.submitForm.get('id')?.value,
-          toanha: this.submitForm.get('toanha')?.value,
-          tang: this.submitForm.get('tang')?.value,
-          sogiuong: this.submitForm.get('sogiuong')?.value,
-          songuoitoida: this.submitForm.get('songuoitoida')?.value,
-          giaphong: this.submitForm.get('giaphong')?.value,
-          gioitinh: this.submitForm.get('gioitinh')?.value,
+          sinhvienid: this.submitForm.get('sinhvienid')?.value,
+          noidungvipham: this.submitForm.get('noidungvipham')?.value,
+          thoigianvipham: this.submitForm.get('thoigianvipham')?.value,
+          hinhthuckiluat: this.submitForm.get('hinhthuckiluat')?.value,
+          thoigiankiluat: this.submitForm.get('thoigiankiluat')?.value
         }
         this.reportService.updaterecord(params).subscribe((data) => {
           this._location.back();
@@ -80,12 +93,11 @@ export class ReportFormComponent implements OnInit {
       } else { // CREATE
         const params = {
           id: this.submitForm.get('id')?.value,
-          toanha: this.submitForm.get('toanha')?.value,
-          tang: this.submitForm.get('tang')?.value,
-          sogiuong: this.submitForm.get('sogiuong')?.value,
-          songuoitoida: this.submitForm.get('songuoitoida')?.value,
-          giaphong: this.submitForm.get('giaphong')?.value,
-          gioitinh: this.submitForm.get('gioitinh')?.value
+          sinhvienid: this.submitForm.get('sinhvienid')?.value,
+          noidungvipham: this.submitForm.get('noidungvipham')?.value,
+          thoigianvipham: this.submitForm.get('thoigianvipham')?.value,
+          hinhthuckiluat: this.submitForm.get('hinhthuckiluat')?.value,
+          thoigiankiluat: this.submitForm.get('thoigiankiluat')?.value
         }
         this.reportService.createrecord(params).subscribe((data) => {
           this._location.back();

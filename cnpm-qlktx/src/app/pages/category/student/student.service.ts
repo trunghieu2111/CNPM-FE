@@ -25,4 +25,20 @@ export class StudentService extends ServiceBaseService{
   createStudent(params: any){
     return this.post(`student`, params);
   }
+
+  updateUser(params: any){
+    return this.post(`user/update/${params._id}`, params);
+  }
+
+  getInfoUserByID(id: any){
+    return this.get(`user/id_student/${id}`);
+  }
+
+  deleteUser(id: any){
+    return this.delete(`user/delete/${id}`);
+  }
+
+  createUser(params: any){
+    return this.post(`user`, params);
+  }
 }

@@ -1,7 +1,7 @@
-<span style="font-size: 27px;">Báo cáo kỉ luật</span>
+<span *ngIf="flagPer == 'student'" style="font-size: 27px;">Không có quyền truy cập!</span>
+<span *ngIf="flagPer == 'admin'" style="font-size: 27px;">Báo cáo kỉ luật</span>
 <br><br>
-<div style="position: relative;">
-
+<div *ngIf="flagPer == 'admin'" style="position: relative;">
     <button #buttonThem nz-button nzType="primary" (click)="addRecord()">
         <i nz-icon nzType="plus" nzTheme="outline"></i>Thêm
     </button>
@@ -31,21 +31,20 @@
             </thead>
             <tbody>
                 <tr *ngFor="let data of basicTable.data">
-                    <!-- <td>{{data.id}}</td>
-                    <td>{{data.toanha}}</td>
-                    <td>{{data.tang}}</td>
-                    <td>{{data.songuoitoida}}</td>
-                    <td>{{data.sogiuong}}</td>
-                    <td>{{data.gioitinh}}</td>
-                    <td>{{data.giaphong}}</td> -->
+                    <td>{{data.id}}</td>
+                    <td>{{data.sinhvienid}}</td>
+                    <td>{{data.noidungvipham}}</td>
+                    <td>{{data.thoigianvipham}}</td>
+                    <td>{{data.hinhthuckiluat}}</td>
+                    <td>{{data.thoigiankiluat}}</td>
 
-                    <!-- <td>
+                    <td>
                         <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close"
                                 nzTheme="outline" title="Xóa" (click)="removeRecord(data._id)"></i></a>
                         &emsp;
                         <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa"
                                 (click)="editRecord(data._id)"></i></a>
-                    </td> -->
+                    </td>
                 </tr>
             </tbody>
         </nz-table>

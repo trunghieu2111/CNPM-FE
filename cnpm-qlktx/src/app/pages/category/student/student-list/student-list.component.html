@@ -1,6 +1,7 @@
-<span style="font-size: 27px;">Quản lý sinh viên</span>
+<span *ngIf="flagPer == 'student'" style="font-size: 27px;">Không có quyền truy cập!</span>
+<span *ngIf="flagPer == 'admin'" style="font-size: 27px;">Quản lý sinh viên</span>
 <br><br>
-<div style="position: relative;">
+<div *ngIf="flagPer == 'admin'" style="position: relative;">
 
     <button #buttonThem nz-button nzType="primary" (click)="addStudent()">
         <i nz-icon nzType="plus" nzTheme="outline"></i>Thêm sinh viên

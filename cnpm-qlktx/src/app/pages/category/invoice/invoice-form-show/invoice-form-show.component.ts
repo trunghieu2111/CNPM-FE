@@ -1,33 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { IData } from 'src/app/pages/report/disciplinary-report/data.model';
+import { IDataRoom } from '../data.model';
+import { ActivatedRoute } from '@angular/router';
 import { RoomService } from '../../room/room.service';
 import { StudentService } from '../../student/student.service';
-import { IDataRoom } from '../data.model';
 import { InvoiceService } from '../invoice.service';
-import {Location} from '@angular/common';
 
 @Component({
-  selector: 'app-invoice-form',
-  templateUrl: './invoice-form.component.html',
-  styleUrls: ['./invoice-form.component.scss']
+  selector: 'app-invoice-form-show',
+  templateUrl: './invoice-form-show.component.html',
+  styleUrls: ['./invoice-form-show.component.scss']
 })
-export class InvoiceFormComponent implements OnInit {
+export class InvoiceFormShowComponent implements OnInit {
 
-  isShowCreateOrUpdate: boolean= false; //false: tạo, true: sửa
   ids = this.route.snapshot.paramMap.get('id');
-  
+  Tinhtien = 0;
+  Tiennuoc = 0;
+
   selectedThang = "";
-  thangs = ['1', '2', '3', '4', '5', '6','7', '8','9', '10','11', '12'];
+  thangs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 
   submitForm: FormGroup;
 
-  dataSV:IData[] = [];
+  dataSV: IData[] = [];
   selectedValue = "";
   SVIDs = [] as any;
 
-  dataRoom:IDataRoom[] = [];
+  dataRoom: IDataRoom[] = [];
   selectedRoom = "";
   RoomIDs = [] as any;
 
@@ -54,17 +55,12 @@ export class InvoiceFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //console.log(ids);
-    //this.isShowCreateOrUpdate = false;
-    if (String(this.ids) !== '0') {
-      this.isShowCreateOrUpdate = true;
-      this.loadData(this.ids);
-    }
+    this.loadData(this.ids);
 
     this.studentService.getListStudent().subscribe((data) => {
       this.dataSV = data;
       //console.log("test", this.dataSV);
-      for(const i in this.dataSV){
+      for (const i in this.dataSV) {
         this.SVIDs.push(this.dataSV[i].id);
       }
       // console.log("dataID:", this.SVIDs);
@@ -72,11 +68,11 @@ export class InvoiceFormComponent implements OnInit {
 
     this.roomService.getListRoom().subscribe((data) => {
       this.dataRoom = data;
-      for(const i in this.dataRoom){
+      for (const i in this.dataRoom) {
         this.RoomIDs.push(this.dataRoom[i].id);
       }
     })
-    
+
   }
 
   public loadData(id: any) {
@@ -98,48 +94,34 @@ export class InvoiceFormComponent implements OnInit {
       this.selectedValue = data.sinhvienid + "";
       this.selectedRoom = data.phongid + "";
       this.selectedThang = data.thang + "";
+      this.Tinhtien = (data.chisodiencuoi - data.chisodiendau) * 2000;
+      this.Tiennuoc = (data.chisonuoccuoi - data.chisonuocdau) * 10000;
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     const valid = this.submitForm.valid;
-    if(valid){
-      if (this.isShowCreateOrUpdate) { // Update
-        const params = {
-          _id: this.ids,
-          id: this.submitForm.get('id')?.value,
-          sinhvienid: this.submitForm.get('sinhvienid')?.value,
-          phongid: this.submitForm.get('phongid')?.value,
-          thang: this.submitForm.get('thang')?.value,
-          nam: this.submitForm.get('nam')?.value,
-          chisodiendau: this.submitForm.get('chisodiendau')?.value,
-          chisodiencuoi: this.submitForm.get('chisodiencuoi')?.value,
-          chisonuocdau: this.submitForm.get('chisonuocdau')?.value,
-          chisonuoccuoi: this.submitForm.get('chisonuoccuoi')?.value,
-          tinhtranghoadon: this.submitForm.get('tinhtranghoadon')?.value
-        }
-        this.invoiceService.updatebill(params).subscribe((data) => {
-          this._location.back();
-        })
-        console.log("data:", params);
-      } else { // CREATE
-        const params = {
-          id: this.submitForm.get('id')?.value,
-          sinhvienid: this.submitForm.get('sinhvienid')?.value,
-          phongid: this.submitForm.get('phongid')?.value,
-          thang: this.submitForm.get('thang')?.value,
-          nam: this.submitForm.get('nam')?.value,
-          chisodiendau: this.submitForm.get('chisodiendau')?.value,
-          chisodiencuoi: this.submitForm.get('chisodiencuoi')?.value,
-          chisonuocdau: this.submitForm.get('chisonuocdau')?.value,
-          chisonuoccuoi: this.submitForm.get('chisonuoccuoi')?.value,
-          tinhtranghoadon: this.submitForm.get('tinhtranghoadon')?.value
-        }
-        this.invoiceService.createbill(params).subscribe((data) => {
-          this._location.back();
-        })
+    if (valid) {
+      // Update Trạng thái Invoice
+      const params = {
+        _id: this.ids,
+        id: this.submitForm.get('id')?.value,
+        sinhvienid: this.submitForm.get('sinhvienid')?.value,
+        phongid: this.submitForm.get('phongid')?.value,
+        thang: this.submitForm.get('thang')?.value,
+        nam: this.submitForm.get('nam')?.value,
+        chisodiendau: this.submitForm.get('chisodiendau')?.value,
+        chisodiencuoi: this.submitForm.get('chisodiencuoi')?.value,
+        chisonuocdau: this.submitForm.get('chisonuocdau')?.value,
+        chisonuoccuoi: this.submitForm.get('chisonuoccuoi')?.value,
+        tinhtranghoadon: "Đã thanh toán"
       }
-    }else{
+      console.log("data:", params);
+      // this.invoiceService.updatebill(params).subscribe((data) => {
+      //   this._location.back();
+      // })
+
+    } else {
       for (const i in this.submitForm.controls) {
         if (this.submitForm.controls.hasOwnProperty(i)) {
           this.submitForm.controls[i].markAsDirty();
@@ -149,7 +131,7 @@ export class InvoiceFormComponent implements OnInit {
     }
   }
 
-  back(){
+  back() {
     this._location.back();
   }
 }

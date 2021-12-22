@@ -9,22 +9,35 @@ import { ServiceLogin } from '../services/service-login.service';
 })
 export class LoginComponent implements OnInit {
 
-  flag = true; //login
+  Notifi = "";
+  Username = '';
+  Password = '';
 
   constructor(
     private router: Router,
     private loginService: ServiceLogin
   ) { }
 
-  chuyen(){
-    // this.loginService.flagLogin = false;
-    // this.flag = this.loginService.flagLogin;
-    this.router.navigate(['/category'], { replaceUrl: true }); 
-
-    // this.loginService.flagPermission = 1;
+  submitLogin(){
+    const params = {
+      username: this.Username,
+      password: this.Password
+    }
+    this.loginService.loginStudent(params).subscribe((data) => {
+      if(data.status == "success"){
+        this.loginService.flagPermission = data.user.role;
+        //console.log("role:", data.user.role);
+        this.router.navigate(['/dashboard'], { replaceUrl: true });
+      }
+      else{
+        this.Notifi = "Sai tài khoản hoặc mật khẩu!";
+      }
+    })
   }
 
   ngOnInit(): void {
   }
+
+  // ! tồn tại
 
 }

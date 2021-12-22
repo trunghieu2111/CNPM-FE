@@ -16,6 +16,8 @@ import { StudentFormComponent } from './student/student-form/student-form.compon
 import { AntDesignModule } from 'src/app/share/ant-design.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
+import { InvoiceFormShowComponent } from './invoice/invoice-form-show/invoice-form-show.component';
 
 
 @NgModule({
@@ -26,10 +28,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContractListComponent,
     ContractFormComponent,
     InvoiceFormComponent,
+    InvoiceListComponent,
     RoomListComponent,
     RoomFormComponent,
     StudentListComponent,
-    StudentFormComponent
+    StudentFormComponent,
+    InvoiceFormShowComponent
   ],
   imports: [
     CommonModule,

@@ -10,36 +10,50 @@
                     <div nz-row>
                         <nz-form-label nz-col nzSpan="6" nzFor="id" style="font-weight: bold;">Mã biên bản
                         </nz-form-label>
-                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập mã sinh viên">
+                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập mã biên bản">
                             <input nz-input type="text" formControlName="id">
                         </nz-form-control>
                     </div>
                 </nz-form-item>
                 <nz-form-item nz-col nzSpan="12">
                     <div nz-row>
-                        <nz-form-label nz-col nzSpan="10" nzFor="toanha" style="font-weight: bold;">Mã sinh viên
+                        <nz-form-label nz-col nzSpan="10" nzFor="sinhvienid" style="font-weight: bold;">Mã sinh viên
                         </nz-form-label>
-                        <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập tòa nhà">
-                            <input nz-input type="text" formControlName="toanha">
-                        </nz-form-control>
+                        <!-- <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập mã sinh viên">
+                            <input nz-input type="text" formControlName="sinhvienid">
+                        </nz-form-control> -->
+                        <nz-select nz-col nzSpan="14" formControlName="sinhvienid" nzShowSearch nzAllowClear
+                            nzPlaceHolder="Chọn mã sinh viên" [(ngModel)]="selectedValue">
+                            <nz-option *ngFor="let sinhvienid of SVIDs" nzLabel="{{sinhvienid}}" nzValue="{{sinhvienid}}">
+                            </nz-option>
+                        </nz-select>
                     </div>
+                    <!-- <div>
+                        <nz-form-label [nzSpan]="0" nzFor="" style="font-weight: bold;">Tỉnh/Thành phố</nz-form-label>
+                        <nz-select style="width: 300px;" formControlName="city" nzShowSearch nzAllowClear nzPlaceHolder="Chọn tỉnh/thành phố" [(ngModel)]="selectedValue">
+                          <nz-option *ngFor="let city of Citys" nzLabel="{{city}}" nzValue="{{city}}">
+                          </nz-option>
+                        </nz-select>
+                      </div> -->
                 </nz-form-item>
             </div>
 
             <div class="form-group" nz-row>
-                <nz-form-label nz-col nzSpan="3" nzFor="giaphong" style="font-weight: bold;">Nội dung</nz-form-label>
-                <nz-form-control nz-col nzSpan="21" nzErrorTip="Chưa nhập giá phòng">
-                    <input nz-input type="text" formControlName="giaphong">
+                <nz-form-label nz-col nzSpan="3" nzFor="noidungvipham" style="font-weight: bold;">Nội dung
+                </nz-form-label>
+                <nz-form-control nz-col nzSpan="21" nzErrorTip="Chưa nhập nội dung">
+                    <input nz-input type="text" formControlName="noidungvipham">
                 </nz-form-control>
             </div><br>
 
             <div class="form-group" nz-row>
                 <div nz-col nzSpan="12">
                     <div nz-row>
-                        <nz-form-label nz-col nzSpan="7" nzFor="giaphong" style="font-weight: bold;">Thời gian vi phạm
+                        <nz-form-label nz-col nzSpan="7" nzFor="thoigianvipham" style="font-weight: bold;">Thời gian vi
+                            phạm
                         </nz-form-label>
-                        <nz-form-control nz-col nzSpan="17" nzErrorTip="Chưa nhập giá phòng">
-                            <input nz-input type="date" placeholder="-Chọn ngày-" formControlName="giaphong">
+                        <nz-form-control nz-col nzSpan="17" nzErrorTip="Chọn thời gian">
+                            <input nz-input type="date" placeholder="-Chọn ngày-" formControlName="thoigianvipham">
                         </nz-form-control>
                     </div>
                 </div>
@@ -48,19 +62,21 @@
             <div class="form-group" nz-row>
                 <nz-form-item nz-col nzSpan="12">
                     <div nz-row>
-                        <nz-form-label nz-col nzSpan="6" nzFor="tang" style="font-weight: bold;">Hình thức kỉ luật
+                        <nz-form-label nz-col nzSpan="6" nzFor="hinhthuckiluat" style="font-weight: bold;">Hình thức kỉ
+                            luật
                         </nz-form-label>
-                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập tầng">
-                            <input nz-input type="text" formControlName="tang">
+                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập hình thức kỉ luật">
+                            <input nz-input type="text" formControlName="hinhthuckiluat">
                         </nz-form-control>
                     </div>
                 </nz-form-item>
                 <nz-form-item nz-col nzSpan="12">
                     <div nz-row>
-                        <nz-form-label nz-col nzSpan="10" nzFor="sogiuong" style="font-weight: bold;">Thời gian kỉ luật
+                        <nz-form-label nz-col nzSpan="10" nzFor="thoigiankiluat" style="font-weight: bold;">Thời gian kỉ
+                            luật
                         </nz-form-label>
-                        <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập số giường">
-                            <input nz-input type="date" formControlName="sogiuong" placeholder="-Chọn ngày-">
+                        <nz-form-control nz-col nzSpan="14" nzErrorTip="Chọn thời gian">
+                            <input nz-input type="date" formControlName="thoigiankiluat" placeholder="-Chọn ngày-">
                         </nz-form-control>
                     </div>
                 </nz-form-item>

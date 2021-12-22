@@ -11,7 +11,7 @@
                         <nz-form-label nz-col nzSpan="6" nzFor="id" style="font-weight: bold;">Mã hóa đơn
                         </nz-form-label>
                         <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập mã phòng">
-                            <input nz-input type="text" formControlName="id">
+                            <input readonly nz-input type="text" formControlName="id">
                         </nz-form-control>
                     </div>
                 </nz-form-item>
@@ -19,7 +19,7 @@
                     <div nz-row>
                         <nz-form-label nz-col nzSpan="10" nzFor="sinhvienid" style="font-weight: bold;">Mã sinh viên
                         </nz-form-label>
-                        <nz-select nz-col nzSpan="14" formControlName="sinhvienid" nzShowSearch nzAllowClear
+                        <nz-select [nzDisabled]="true" nz-col nzSpan="14" formControlName="sinhvienid" nzShowSearch nzAllowClear
                             nzPlaceHolder="Chọn mã sinh viên" [(ngModel)]="selectedValue">
                             <nz-option *ngFor="let sinhvienid of SVIDs" nzLabel="{{sinhvienid}}"
                                 nzValue="{{sinhvienid}}">
@@ -34,7 +34,7 @@
                     <div nz-row>
                         <nz-form-label nz-col nzSpan="6" nzFor="thang" style="font-weight: bold;">Tháng
                         </nz-form-label>
-                        <nz-select nz-col nzSpan="18" formControlName="thang" nzShowSearch nzAllowClear
+                        <nz-select [nzDisabled]="true" nz-col nzSpan="18" formControlName="thang" nzShowSearch nzAllowClear
                             nzPlaceHolder="-Chọn tháng-" [(ngModel)]="selectedThang">
                             <nz-option *ngFor="let m of thangs" nzLabel="{{m}}" nzValue="{{m}}">
                             </nz-option>
@@ -45,7 +45,7 @@
                     <div nz-row>
                         <nz-form-label nz-col nzSpan="10" nzFor="phongid" style="font-weight: bold;">Mã phòng
                         </nz-form-label>
-                        <nz-select nz-col nzSpan="14" formControlName="phongid" nzShowSearch nzAllowClear
+                        <nz-select [nzDisabled]="true" nz-col nzSpan="14" formControlName="phongid" nzShowSearch nzAllowClear
                             nzPlaceHolder="-Chọn mã phòng-" [(ngModel)]="selectedRoom">
                             <nz-option *ngFor="let phongid of RoomIDs" nzLabel="{{phongid}}"
                                 nzValue="{{phongid}}">
@@ -61,7 +61,7 @@
                         <nz-form-label nz-col nzSpan="6" nzFor="chisodiendau" style="font-weight: bold;">Số điện đầu
                         </nz-form-label>
                         <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập số điện đầu">
-                            <input nz-input type="text" formControlName="chisodiendau">
+                            <input readonly nz-input type="text" formControlName="chisodiendau">
                         </nz-form-control>
                     </div>
                 </nz-form-item>
@@ -70,7 +70,7 @@
                         <nz-form-label nz-col nzSpan="10" nzFor="chisodiencuoi" style="font-weight: bold;">Số điện cuối
                         </nz-form-label>
                         <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập số điện cuối">
-                            <input nz-input type="text" formControlName="chisodiencuoi">
+                            <input readonly nz-input type="text" formControlName="chisodiencuoi">
                         </nz-form-control>
                     </div>
                 </nz-form-item>
@@ -82,7 +82,7 @@
                         <nz-form-label nz-col nzSpan="6" nzFor="chisonuocdau" style="font-weight: bold;">Số nước đầu
                         </nz-form-label>
                         <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập số nước đầu">
-                            <input nz-input type="text" formControlName="chisonuocdau">
+                            <input readonly nz-input type="text" formControlName="chisonuocdau">
                         </nz-form-control>
                     </div>
                 </nz-form-item>
@@ -91,7 +91,7 @@
                         <nz-form-label nz-col nzSpan="10" nzFor="chisonuoccuoi" style="font-weight: bold;">Số nước cuối
                         </nz-form-label>
                         <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập số nước cuối">
-                            <input nz-input type="text" formControlName="chisonuoccuoi">
+                            <input readonly nz-input type="text" formControlName="chisonuoccuoi">
                         </nz-form-control>
                     </div>
                 </nz-form-item>
@@ -103,7 +103,7 @@
                         <nz-form-label nz-col nzSpan="6" nzFor="nam" style="font-weight: bold;">Năm
                         </nz-form-label>
                         <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập năm">
-                            <input nz-input type="text" formControlName="nam">
+                            <input readonly nz-input type="text" formControlName="nam">
                         </nz-form-control>
                     </div>
                 </nz-form-item>
@@ -112,8 +112,27 @@
                         <nz-form-label nz-col nzSpan="10" nzFor="tinhtranghoadon" style="font-weight: bold;">Tình Trạng
                         </nz-form-label>
                         <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập tình trạng">
-                            <input nz-input type="text" formControlName="tinhtranghoadon">
+                            <input readonly nz-input type="text" formControlName="tinhtranghoadon">
                         </nz-form-control>
+                    </div>
+                </nz-form-item>
+            </div>
+
+            <div class="form-group" nz-row>
+                <nz-form-item nz-col nzSpan="14">
+                    <div nz-row>
+                        <div nz-col nzSpan="8" nzFor="Tinhtien"><span class="tinhtien">Tổng tiền điện:</span>
+                        </div>
+                        <div nz-col nzSpan="16" nzFor="Tinhtien"><span class="tinhtien">{{Tinhtien}} đ</span>
+                        </div>
+                    </div>
+                </nz-form-item>
+                <nz-form-item nz-col nzSpan="10">
+                    <div nz-row>
+                        <div nz-col nzSpan="12" nzFor="Tiennuoc"><span class="tinhtien">Tổng tiền nước:</span>
+                        </div>
+                        <div nz-col nzSpan="12" nzFor="Tiennuoc"><span class="tinhtien">{{Tiennuoc}} đ</span>
+                        </div>
                     </div>
                 </nz-form-item>
             </div>
@@ -124,7 +143,7 @@
 
 <div style="position: relative; height: 50px; margin-top: 50px;">
     <button class="luu" nz-button nzType="primary" (click)="onSubmit()">
-        Lưu
+        Thanh Toán
     </button>
     <button class="back" nz-button nzType="primary" (click)="back()">
         Trở về

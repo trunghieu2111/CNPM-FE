@@ -5,6 +5,7 @@ import { AssetListComponent } from './asset/asset-list/asset-list.component';
 import { CategoryComponent } from './category.component';
 import { ContractFormComponent } from './contract/contract-form/contract-form.component';
 import { ContractListComponent } from './contract/contract-list/contract-list.component';
+import { InvoiceFormShowComponent } from './invoice/invoice-form-show/invoice-form-show.component';
 import { InvoiceFormComponent } from './invoice/invoice-form/invoice-form.component';
 import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
 import { RoomFormComponent } from './room/room-form/room-form.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'room-list', component: RoomListComponent},
   { path: 'room-form/:id', component: RoomFormComponent},
   { path: 'student-list', component: StudentListComponent},
-  { path: 'student-form/:id', component: StudentFormComponent}
+  { path: 'student-form/:id', component: StudentFormComponent},
+  { path: 'invoice-form-show/:id', component: InvoiceFormShowComponent}
 ];
 
 @NgModule({

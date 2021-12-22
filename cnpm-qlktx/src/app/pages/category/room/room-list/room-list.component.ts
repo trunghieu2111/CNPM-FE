@@ -15,7 +15,7 @@ export class RoomListComponent implements OnInit {
   pageSize: number = 5;
   total: number = 0;
 
-  flagPer = 1;
+  flagPer = "";
 
   constructor(public roomService: RoomService,
     public loginService: ServiceLogin,
@@ -23,7 +23,7 @@ export class RoomListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.flagPer = this.loginService.flagPermission
+    this.flagPer = this.loginService.flagPermission;
     this.loadData();
   }
   public loadData() {

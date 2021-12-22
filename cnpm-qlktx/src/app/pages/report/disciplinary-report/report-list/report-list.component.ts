@@ -15,7 +15,7 @@ export class ReportListComponent implements OnInit {
   pageSize: number = 5;
   total: number = 0;
 
-  flagPer = 1;
+  flagPer = "";
 
   constructor(public recordService: recordService,
     public loginService: ServiceLogin,

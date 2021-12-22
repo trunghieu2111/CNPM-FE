@@ -8,7 +8,8 @@
     border: 1px solid #CCC;
     background: url(https://media4.giphy.com/media/BHNfhgU63qrks/giphy.gif) center center no-repeat;
     background-size: cover;
-    margin: 30px auto;
+    margin: auto;
+    margin-top: 70px;
     border-radius: 20px;
   }
   .login .form {
@@ -17,12 +18,10 @@
     padding: 15px 25px;
   }
   .login .form h2 {
-    color: #FFF;
+    color: rgb(0, 0, 0);
     text-align: center;
     font-weight: normal;
     font-size: 18px;
-    margin-top: 60px;
-    margin-bottom: 80px;
   }
   .login .form input {
     width: 100%;
@@ -46,6 +45,6 @@
     background: rgba(255,255,255,.9);
     color: #444;
     font-size: 15px;
-    margin-top: 40px;
+    margin-top: 20px;
     font-weight: bold;
   }

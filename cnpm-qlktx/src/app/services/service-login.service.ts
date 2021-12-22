@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { ServiceBaseService } from 'src/app/services/service-base.service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class ServiceLogin {
-    flagPermission = 1;
-    flagLogin = true;
-    constructor() { }
+export class ServiceLogin extends ServiceBaseService{
+  flagPermission = "";
+  //flagLogin = true;
+  loginStudent(params: any){
+    return this.post(`auth/login`, params);
+  }
 }
