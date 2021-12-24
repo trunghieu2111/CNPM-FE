@@ -6,6 +6,7 @@ import { ServiceBaseService } from 'src/app/services/service-base.service';
 })
 export class ServiceLogin extends ServiceBaseService{
   flagPermission = "";
+  flagSinhvienId = "";
   //flagLogin = true;
   loginStudent(params: any){
     return this.post(`auth/login`, params);

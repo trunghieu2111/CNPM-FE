@@ -6,7 +6,11 @@
         <button *ngIf="flagPer == 'admin'" #buttonThem nz-button nzType="primary" (click)="addContract()">
             <i nz-icon nzType="plus" nzTheme="outline"></i>Thêm mới
         </button>
-        <span *ngIf="flagPer == 'student'" style="font-size: 27px;">Thông tin hợp đồng</span>
+
+        <span *ngIf="flagPer == 'student'" style="font-size: 27px;">Thông tin hợp đồng</span><br><br>
+        <button *ngIf="flagPer == 'student' && Onestudent==0" #buttonThem nz-button nzType="primary" (click)="registerContract()">
+            <i nz-icon nzType="plus" nzTheme="outline"></i>Đăng kí ở KTX
+        </button>
         <div style="width: 400px; position: absolute; right: 0%; top: 40px;">
             <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
                 <input nz-input placeholder="input search text" (keyup)="onKey($event)" />
@@ -16,7 +20,7 @@
             </ng-template>
         </div>
 
-        <div class="tableContract" style="border-top: 2px solid #66CCFF; margin-top: 50px">
+        <div *ngIf="flagPer == 'admin'" class="tableContract" style="border-top: 2px solid #66CCFF; margin-top: 50px">
             <nz-table #tableList style="margin-top: 10px" #basicTable [nzData]="data" [nzPageIndex]="pageIndex"
                 [nzPageSize]="pageSize" [nzTotal]="total">
                 <thead>
@@ -43,14 +47,56 @@
                             <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close"
                                     nzTheme="outline" title="Xóa hợp đồng" (click)="removeContract(data._id)"></i></a>
                             &emsp;
-                            <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa hợp đồng"
+                            <a><i style="font-size: 20px; margin-right: 10px" nz-icon nzType="edit" nzTheme="outline" title="Sửa hợp đồng"
                                     (click)="editContract(data._id)"></i></a>
                             &emsp;
-                            <a><i style="color: rgb(44, 0, 241); margin-right: 10px; font-size: 20px;" nz-icon nzType="form"
-                                    nzTheme="outline" title="Duyệt đăng kí" (click)="removeContract(data._id)"></i></a>
+                            <a><i style="color: rgb(49, 2, 255); margin-right: 10px; font-size: 20px;" nz-icon nzType="form"
+                                    nzTheme="outline" title="Duyệt đăng kí" (click)="
+                                    confirmRegisterContract(data._id)"></i></a>
                             &emsp;
-                            <a><i style="font-size: 20px;" nz-icon nzType="form" nzTheme="outline" title="Duyệt gia hạn"
-                                    (click)="editContract(data._id)"></i></a>
+                            <a><i style="font-size: 20px; color: rgb(255, 218, 52);" nz-icon nzType="form" nzTheme="outline" title="Duyệt gia hạn"
+                                    (click)="extendContract(data._id)"></i></a>
+                        </td>
+
+                        <!-- <td *ngIf="flagPer == 'student'">
+                            <a><i style="margin-right: 10px; font-size: 20px;" nz-icon nzType="form" nzTheme="outline"
+                                    title="Xem hợp đồng" (click)="extendContract(data._id)"></i></a>
+                        </td> -->
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+
+        <!-- //student -->
+        <div *ngIf="flagPer == 'student'" class="tableContract" style="border-top: 2px solid #66CCFF; margin-top: 50px">
+            <nz-table #tableList style="margin-top: 10px" #basicTable [nzData]="dataOneStudent" [nzPageIndex]="pageIndex"
+                [nzPageSize]="pageSize" [nzTotal]="total">
+                <thead>
+                    <tr>
+                        <th>Mã hợp đồng</th>
+                        <th>Mã sinh viên</th>
+                        <th>Mã phòng</th>
+                        <th>Ngày bắt đầu</th>
+                        <th>Ngày kết thúc</th>
+                        <th>Tình trạng</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of basicTable.data">
+                        <td>{{data.id}}</td>
+                        <td>{{data.sinhvienid}}</td>
+                        <td>{{data.phongid}}</td>
+                        <td>{{data.ngaybatdau}}</td>
+                        <td>{{data.ngayketthuc}}</td>
+                        <td>{{data.tinhtranghopdong}}</td>
+
+                        <td>
+                            <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close"
+                                    nzTheme="outline" title="Chấm dứt hợp đồng" (click)="removeContractStudent(data._id)"></i></a>
+                            &emsp;
+                            <a><i style="font-size: 20px; color: rgb(255, 218, 52);" nz-icon nzType="form" nzTheme="outline" title="Gia hạn HĐ"
+                                    (click)="extendContractStudent(data._id)"></i></a>
                         </td>
 
                         <!-- <td *ngIf="flagPer == 'student'">

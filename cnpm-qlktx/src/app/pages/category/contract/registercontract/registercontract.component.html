@@ -8,47 +8,23 @@
             <div class="form-group" nz-row>
                 <nz-form-item nz-col nzSpan="12">
                     <div nz-row>
-                        <nz-form-label nz-col nzSpan="6" nzFor="id" style="font-weight: bold;">Mã hợp đồng
+                        <nz-form-label nz-col nzSpan="6" nzFor="phongid" style="font-weight: bold;">Mã phòng
                         </nz-form-label>
-                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa mã hợp đồng">
-                            <input nz-input type="text" formControlName="id">
-                        </nz-form-control>
-                    </div>
-                </nz-form-item>
-                <nz-form-item nz-col nzSpan="12">
-                    <div nz-row>
-                        <nz-form-label hidden nz-col nzSpan="10" nzFor="tinhtranghopdong" style="font-weight: bold;">Tình Trạng
-                        </nz-form-label>
-                        <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập tình trạng">
-                            <input hidden nz-input type="text" formControlName="tinhtranghopdong">
-                        </nz-form-control>
-                    </div>
-                </nz-form-item>
-            </div>
-
-            <div class="form-group" nz-row>
-                <nz-form-item nz-col nzSpan="12">
-                    <div nz-row>
-                        <nz-form-label nz-col nzSpan="6" nzFor="sinhvienid" style="font-weight: bold;">Mã sinh viên
-                        </nz-form-label>
-                        <nz-select nz-col nzSpan="18" formControlName="sinhvienid" nzShowSearch nzAllowClear
-                            nzPlaceHolder="Chọn mã sinh viên" [(ngModel)]="selectedValue">
-                            <nz-option *ngFor="let sinhvienid of SVIDs" nzLabel="{{sinhvienid}}"
-                                nzValue="{{sinhvienid}}">
-                            </nz-option>
-                        </nz-select>
-                    </div>
-                </nz-form-item>
-                <nz-form-item nz-col nzSpan="12">
-                    <div nz-row>
-                        <nz-form-label nz-col nzSpan="10" nzFor="phongid" style="font-weight: bold;">Mã phòng
-                        </nz-form-label>
-                        <nz-select nz-col nzSpan="14" formControlName="phongid" nzShowSearch nzAllowClear
+                        <nz-select nz-col nzSpan="18" formControlName="phongid" nzShowSearch nzAllowClear
                             nzPlaceHolder="-Chọn mã phòng-" [(ngModel)]="selectedRoom">
                             <nz-option *ngFor="let phongid of RoomIDs" nzLabel="{{phongid}}"
                                 nzValue="{{phongid}}">
                             </nz-option>
                         </nz-select>
+                    </div>
+                </nz-form-item>
+                <nz-form-item nz-col nzSpan="12">
+                     <div nz-row>
+                        <nz-form-label hidden nz-col nzSpan="10" nzFor="tinhtranghopdong" style="font-weight: bold;">Tình Trạng
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập tình trạng">
+                            <input hidden nz-input type="text" formControlName="tinhtranghopdong">
+                        </nz-form-control>
                     </div>
                 </nz-form-item>
             </div>
@@ -86,3 +62,4 @@
         Trở về
     </button>
 </div>
+

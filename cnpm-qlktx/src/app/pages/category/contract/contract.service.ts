@@ -26,7 +26,7 @@ export class ContractService extends ServiceBaseService{
     return this.post(`contract`, params);
   }
 
-//   getcontractEmpty(){
-//     return this.get(`/common/phong_con_trong`);
-//   }
+  getcontractStudentId(id: any){
+    return this.get(`contract?sinhvienid=${id}`);
+  }
 }

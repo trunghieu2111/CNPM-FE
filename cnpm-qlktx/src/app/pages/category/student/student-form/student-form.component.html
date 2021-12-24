@@ -81,13 +81,14 @@
                 <nz-form-control nz-col nzSpan="21" nzErrorTip="Chưa nhập địa chỉ">
                     <input nz-input type="text" formControlName="diachi">
                 </nz-form-control>
-            </div>
+            </div><br>
 
-            <!-- <div class="form-group" nz-row>
+            <div *ngIf="checked==true" class="form-group" nz-row>
                 <nz-form-item nz-col nzSpan="12">
                     <div nz-row>
-                        <nz-form-label nz-col nzSpan="6" nzFor="username" style="font-weight: bold;">Username</nz-form-label>
-                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập lớp">
+                        <nz-form-label nz-col nzSpan="6" nzFor="username" style="font-weight: bold;">Username
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập username">
                             <input nz-input type="text" formControlName="username">
                         </nz-form-control>
                     </div>
@@ -96,16 +97,22 @@
                     <div nz-row>
                         <nz-form-label nz-col nzSpan="10" nzFor="password" style="font-weight: bold;">Password
                         </nz-form-label>
-                        <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập khoa">
-                            <input nz-input type="text" formControlName="password">
+                        <nz-form-control nz-col nzSpan="14" nzErrorTip="Chưa nhập password">
+                            <input nz-input type="password" formControlName="password">
                         </nz-form-control>
                     </div>
                 </nz-form-item>
-            </div> -->
+            </div>
 
         </div>
     </div>
 </form>
+
+<div *ngIf="checked==false">
+    <button (click)="loadTK()" style="border: #4caf50; margin-left: 100px; background-color: rgb(22, 187, 63);"
+        nz-button nzType="primary" nzShape="circle"><i nz-icon nzType="plus" nzTheme="outline"></i></button>
+    <span style="margin-left: 10px; font-weight: bold;">Tài khoản</span>
+</div>
 
 <div style="position: relative; height: 50px; margin-top: 50px;">
     <button class="luu" nz-button nzType="primary" (click)="onSubmit()">

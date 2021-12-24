@@ -19,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
 import { InvoiceFormShowComponent } from './invoice/invoice-form-show/invoice-form-show.component';
 import { ShowAssetInRoomComponent } from './asset/show-asset-in-room/show-asset-in-room.component';
+import { ExtendContractComponent } from './contract/extend-contract/extend-contract.component';
+import { RegistercontractComponent } from './contract/registercontract/registercontract.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { ShowAssetInRoomComponent } from './asset/show-asset-in-room/show-asset-
     StudentListComponent,
     StudentFormComponent,
     InvoiceFormShowComponent,
-    ShowAssetInRoomComponent
+    ShowAssetInRoomComponent,
+    ExtendContractComponent,
+    RegistercontractComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,40 @@
+<span style="font-size: 27px;">Gia hạn hợp đồng</span>
+<br><br>
+<form nz-form [formGroup]="submitForm">
+    <div style="border-top: 2px solid #66CCFF;">
+
+        <div style="margin-top: 20px;">
+
+            <div class="form-group" nz-row>
+                <nz-form-item nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label nz-col nzSpan="6" nzFor="ngayketthuc" style="font-weight: bold;">Ngày kết thúc
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chọn thời gian">
+                            <input nz-input type="date" formControlName="ngayketthuc" placeholder="-Chọn ngày-">
+                        </nz-form-control>
+                    </div>
+                </nz-form-item>
+                <nz-form-item nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label hidden nz-col nzSpan="10" nzFor="ngaybatdau" style="font-weight: bold;">N
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="14" nzErrorTip="Chọn thời gian">
+                            <input hidden nz-input type="date" formControlName="ngaybatdau" placeholder="-Chọn ngày-">
+                        </nz-form-control>
+                    </div>
+                </nz-form-item>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<div style="position: relative; height: 50px; margin-top: 50px;">
+    <button class="luu" nz-button nzType="primary" (click)="onSubmit()">
+        Lưu
+    </button>
+    <button class="back" nz-button nzType="primary" (click)="back()">
+        Trở về
+    </button>
+</div>

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { StudentService } from '../student.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
+import { ServiceLogin } from 'src/app/services/service-login.service';
 
 @Component({
   selector: 'app-student-form',
@@ -11,12 +12,16 @@ import {Location} from '@angular/common';
 })
 export class StudentFormComponent implements OnInit {
 
-  isShowCreateOrUpdate: boolean= false; //false: tạo, true: sửa
+  isShowCreateOrUpdate: boolean = false; //false: tạo, true: sửa
   ids = this.route.snapshot.paramMap.get('id');
+
+  checked = false;
+  idStudent = "";
+  dataUser: any;
 
   selectedValue = null;
   sexs = ['Nam', 'Nữ'];
-  
+
   submitForm: FormGroup;
 
   constructor(
@@ -34,8 +39,8 @@ export class StudentFormComponent implements OnInit {
       gioitinh: [null, Validators.required],
       diachi: [null, Validators.required],
       sodienthoai: [null, Validators.required],
-      // username: [null, Validators.required],
-      // password: [null, Validators.required]
+      username: [null, Validators.required],
+      password: [null, Validators.required]
     })
   }
 
@@ -60,10 +65,14 @@ export class StudentFormComponent implements OnInit {
         gioitinh: data.gioitinh,
         sodienthoai: data.sodienthoai
       })
-      //console.log("data", data);
+      //console.log("data", data.id);
+      this.idStudent = data.id + "";
     });
 
-    // this.studentService.getInfoUserByID(this.submitForm.get('id')?.value).subscribe((data) => {
+    // console.log("idsv:", this.idStudent);
+    // this.studentService.getInfoUserByID(this.idStudent).subscribe((data) => {
+    //   this.dataUser = data;
+    //   console.log("data:", this.dataUser);
     //   this.submitForm.patchValue({
     //     username: data.username,
     //     password: data.password
@@ -71,14 +80,37 @@ export class StudentFormComponent implements OnInit {
     // });
   }
 
-  onSubmit(){
+  loadTK() {
+    this.checked = true;
+    //console.log("idsv:", this.idStudent);
+    if (String(this.ids) !== '0') {
+      this.studentService.getInfoUserByID(this.idStudent).subscribe((data) => {
+        this.dataUser = data;
+        console.log("data:", this.dataUser);
+        this.submitForm.patchValue({
+          username: data[0].username,
+          password: data[0].password
+        })
+      });
+    }
+    
+  }
+
+  onSubmit() {
     const valid = this.submitForm.valid;
-    if(valid){
+    if (valid) {
       if (this.isShowCreateOrUpdate) { // Update
-        // const pars = {
-        //   : this.submitForm.get('id')?.value,
-        //   hoten: this.submitForm.get('hoten')?.value,
-        // }
+        const pars = {
+          username: this.submitForm.get('username')?.value,
+          password: this.submitForm.get('password')?.value,
+          role: "student",
+          id_student: this.submitForm.get('id')?.value,
+          _id: this.dataUser[0]._id,
+          tokens: []
+        }
+        this.studentService.updateUser(pars).subscribe((data) => {
+        })
+
         const params = {
           _id: this.ids,
           id: this.submitForm.get('id')?.value,
@@ -94,6 +126,16 @@ export class StudentFormComponent implements OnInit {
           this._location.back();
         })
       } else { // CREATE
+        const pars = {
+          username: this.submitForm.get('username')?.value,
+          password: this.submitForm.get('password')?.value,
+          role: "student",
+          id_student: this.submitForm.get('id')?.value,
+          tokens: []
+        }
+        this.studentService.createUser(pars).subscribe((data) => {
+        })
+
         const params = {
           id: this.submitForm.get('id')?.value,
           hoten: this.submitForm.get('hoten')?.value,
@@ -108,7 +150,7 @@ export class StudentFormComponent implements OnInit {
           this._location.back();
         })
       }
-    }else{
+    } else {
       for (const i in this.submitForm.controls) {
         if (this.submitForm.controls.hasOwnProperty(i)) {
           this.submitForm.controls[i].markAsDirty();
@@ -118,7 +160,7 @@ export class StudentFormComponent implements OnInit {
     }
   }
 
-  back(){
+  back() {
     this._location.back();
   }
 
