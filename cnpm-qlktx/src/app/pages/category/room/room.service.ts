@@ -27,6 +27,6 @@ export class RoomService extends ServiceBaseService{
   }
 
   getRoomEmpty(){
-    return this.get(`/common/phong_con_trong`);
+    return this.get(`common/phong_con_trong`);
   }
 }

@@ -1,1 +1,72 @@
-<p>asset-list works!</p>
+<div>
+    <span *ngIf="flagPer == 'admin'" style="font-size: 27px;">Quản lý tài sản</span>
+    <br><br>
+    <div style="position: relative;">
+        <button *ngIf="flagPer == 'admin'" #buttonThem nz-button nzType="primary" (click)="addAsset()">
+            <i nz-icon nzType="plus" nzTheme="outline"></i>Thêm mới
+        </button>
+        <span *ngIf="flagPer == 'student'" style="font-size: 27px;">Thông tin tài sản</span>
+         
+        <!-- <td  *ngIf="flagPer == 'student'">
+            <a><i style="margin-right: 10px; font-size: 20px;" nz-icon nzType="form"
+                    nzTheme="outline" title="Xem hóa đơn" (click)="getSign(data._id)"></i></a>
+        </td> -->
+        
+        <!-- <button *ngIf="flagPer == 'admin'" #buttonThem nz-button nzType="primary" (click)="sendSign()">
+            <i nz-icon nzType="form" nzTheme="outline"></i>Kí gửi tài sản
+        </button> -->
+        <button style="margin-left: 50px;" *ngIf="flagPer == 'admin'" nz-button nzType="default" nzDanger (click)="sendSign()">
+            <i nz-icon nzType="form" nzTheme="outline"></i>Kí gửi tài sản
+        </button>
+        <!-- <td  *ngIf="flagPer == 'admin'">
+            <a><i style="margin-right: 10px; font-size: 20px;" nz-icon nzType="form"
+                    nzTheme="outline" title="Xem hóa đơn" (click)="sendSign(data._id)"></i></a>
+        </td> -->
+        <br><br>
+        <button *ngIf="flagPer == 'student'" nz-button nzType="default" nzDanger (click)="getSign()">
+            <i nz-icon nzType="form" nzTheme="outline"></i>Kí nhận tài sản
+        </button>
+        <div style="width: 400px; position: absolute; right: 0%; top: 40px;">
+            <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                <input nz-input placeholder="input search text" (keyup)="onKey($event)" />
+            </nz-input-group>
+            <ng-template #suffixIconButton>
+                <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+            </ng-template>
+        </div>
+
+        <div class="tableAsset" style="border-top: 2px solid #66CCFF; margin-top: 50px">
+            <nz-table #tableList style="margin-top: 10px" #basicTable [nzData]="data" [nzPageIndex]="pageIndex"
+                [nzPageSize]="pageSize" [nzTotal]="total">
+                <thead>
+                    <tr>
+                        <th>Mã tài sản</th>
+                        <th>Mã phòng</th>
+                        <th>Tên tài sản</th>
+                        <th>Tình trạng</th>
+                        <th>Đơn vị tính</th>
+                        <th *ngIf="flagPer == 'admin'">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of basicTable.data">
+                        <td>{{data.mataisai}}</td>
+                        <td>{{data.maphong}}</td>
+                        <td>{{data.tentaisan}}</td>
+                        <td>{{data.tinhtrang}}</td>
+                        <td>{{data.donvitinh}}</td>
+
+                        <td *ngIf="flagPer == 'admin'">
+                            <a><i style="color: red; margin-right: 10px; font-size: 20px;" nz-icon nzType="close"
+                                    nzTheme="outline" title="Xóa hóa đơn" (click)="removeAsset(data._id)"></i></a>
+                            &emsp;
+                            <a><i style="font-size: 20px;" nz-icon nzType="edit" nzTheme="outline" title="Sửa hóa đơn"
+                                    (click)="editAsset(data._id)"></i></a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>

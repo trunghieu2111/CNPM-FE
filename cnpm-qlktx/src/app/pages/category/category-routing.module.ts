@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AssetFormComponent } from './asset/asset-form/asset-form.component';
 import { AssetListComponent } from './asset/asset-list/asset-list.component';
+import { ShowAssetInRoomComponent } from './asset/show-asset-in-room/show-asset-in-room.component';
 import { CategoryComponent } from './category.component';
 import { ContractFormComponent } from './contract/contract-form/contract-form.component';
 import { ContractListComponent } from './contract/contract-list/contract-list.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'room-form/:id', component: RoomFormComponent},
   { path: 'student-list', component: StudentListComponent},
   { path: 'student-form/:id', component: StudentFormComponent},
-  { path: 'invoice-form-show/:id', component: InvoiceFormShowComponent}
+  { path: 'invoice-form-show/:id', component: InvoiceFormShowComponent},
+  { path: 'show-asset-in-room', component: ShowAssetInRoomComponent},
 ];
 
 @NgModule({

@@ -1,1 +1,71 @@
-<p>asset-form works!</p>
+<span style="font-size: 27px;">Thông tin tài sản</span>
+<br><br>
+<form nz-form [formGroup]="submitForm">
+    <div style="border-top: 2px solid #66CCFF;">
+
+        <div style="margin-top: 20px;">
+
+            <div class="form-group" nz-row>
+                <nz-form-item nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label nz-col nzSpan="6" nzFor="mataisai" style="font-weight: bold;">Mã tài sản
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập mã tài sản">
+                            <input nz-input type="text" formControlName="mataisai">
+                        </nz-form-control>
+                    </div>
+                </nz-form-item>
+                <nz-form-item nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label nz-col nzSpan="10" nzFor="maphong" style="font-weight: bold;">Mã phòng
+                        </nz-form-label>
+                        <nz-select nz-col nzSpan="14" formControlName="maphong" nzShowSearch nzAllowClear
+                            nzPlaceHolder="-Chọn mã phòng-" [(ngModel)]="selectedRoom">
+                            <nz-option *ngFor="let maphong of RoomIDs" nzLabel="{{maphong}}"
+                                nzValue="{{maphong}}">
+                            </nz-option>
+                        </nz-select>
+                    </div>
+                </nz-form-item>
+            </div>
+
+            <div class="form-group" nz-row>
+                <nz-form-label nz-col nzSpan="3" nzFor="tentaisan" style="font-weight: bold;">Tên tài sản</nz-form-label>
+                <nz-form-control nz-col nzSpan="21" nzErrorTip="Chưa nhập tên tài sản">
+                  <input nz-input type="text" formControlName="tentaisan">
+                </nz-form-control>
+            </div><br>
+
+            <div class="form-group" nz-row>
+                <nz-form-item nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label nz-col nzSpan="6" nzFor="donvitinh" style="font-weight: bold;">Đơn vị tính
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="18" nzErrorTip="Chưa nhập đơn vị tính">
+                            <input nz-input type="text" formControlName="donvitinh">
+                        </nz-form-control>
+                    </div>
+                </nz-form-item>
+                <nz-form-item nz-col nzSpan="12">
+                    <div nz-row>
+                        <nz-form-label hidden nz-col nzSpan="10" nzFor="tinhtrang" style="font-weight: bold;">Tình trạng
+                        </nz-form-label>
+                        <nz-form-control nz-col nzSpan="14" nzErrorTip="">
+                            <input hidden nz-input type="text" formControlName="tinhtrang">
+                        </nz-form-control>
+                    </div>
+                </nz-form-item>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<div style="position: relative; height: 50px; margin-top: 50px;">
+    <button class="luu" nz-button nzType="primary" (click)="onSubmit()">
+        Lưu
+    </button>
+    <button class="back" nz-button nzType="primary" (click)="back()">
+        Trở về
+    </button>
+</div>

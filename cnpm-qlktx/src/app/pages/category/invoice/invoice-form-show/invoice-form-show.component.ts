@@ -18,6 +18,7 @@ export class InvoiceFormShowComponent implements OnInit {
   ids = this.route.snapshot.paramMap.get('id');
   Tinhtien = 0;
   Tiennuoc = 0;
+  Status = "";
 
   selectedThang = "";
   thangs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
@@ -91,6 +92,7 @@ export class InvoiceFormShowComponent implements OnInit {
       })
       //console.log("data", data);
       //console.log("data:", data.sinhvienid);
+      this.Status = data.tinhtranghoadon;
       this.selectedValue = data.sinhvienid + "";
       this.selectedRoom = data.phongid + "";
       this.selectedThang = data.thang + "";

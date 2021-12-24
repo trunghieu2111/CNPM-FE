@@ -1,11 +1,12 @@
 <div>
-    <br>
+    <span *ngIf="flagPer == 'admin'" style="font-size: 27px;">Quản lý hóa đơn</span>
+    <br><br>
     <div style="position: relative;">
 
         <button *ngIf="flagPer == 'admin'" #buttonThem nz-button nzType="primary" (click)="addInvoice()">
             <i nz-icon nzType="plus" nzTheme="outline"></i>Thêm hóa đơn
         </button>
-        <span style="font-size: 27px;">Thông tin hóa đơn</span>
+        <span *ngIf="flagPer == 'student'" style="font-size: 27px;">Thông tin hóa đơn</span>
         <div style="width: 400px; position: absolute; right: 0%; top: 40px;">
             <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
                 <input nz-input placeholder="input search text" (keyup)="onKey($event)" />

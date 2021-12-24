@@ -18,6 +18,7 @@ import { AntDesignModule } from 'src/app/share/ant-design.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InvoiceListComponent } from './invoice/invoice-list/invoice-list.component';
 import { InvoiceFormShowComponent } from './invoice/invoice-form-show/invoice-form-show.component';
+import { ShowAssetInRoomComponent } from './asset/show-asset-in-room/show-asset-in-room.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { InvoiceFormShowComponent } from './invoice/invoice-form-show/invoice-fo
     RoomFormComponent,
     StudentListComponent,
     StudentFormComponent,
-    InvoiceFormShowComponent
+    InvoiceFormShowComponent,
+    ShowAssetInRoomComponent
   ],
   imports: [
     CommonModule,

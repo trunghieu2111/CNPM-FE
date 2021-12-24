@@ -142,7 +142,7 @@
 </form>
 
 <div style="position: relative; height: 50px; margin-top: 50px;">
-    <button class="luu" nz-button nzType="primary" (click)="onSubmit()">
+    <button *ngIf="Status=='Chưa thanh toán'" class="luu" nz-button nzType="primary" (click)="onSubmit()">
         Thanh Toán
     </button>
     <button class="back" nz-button nzType="primary" (click)="back()">

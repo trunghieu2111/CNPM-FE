@@ -49,7 +49,7 @@ export class InvoiceFormComponent implements OnInit {
       chisodiencuoi: [null, Validators.required],
       chisonuocdau: [null, Validators.required],
       chisonuoccuoi: [null, Validators.required],
-      tinhtranghoadon: [null, Validators.required]
+      tinhtranghoadon: "Chưa thanh toán"
     })
   }
 

@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   submitLogin(){
+    //this.router.navigate(['/dashboard'], { replaceUrl: true });
     const params = {
       username: this.Username,
       password: this.Password

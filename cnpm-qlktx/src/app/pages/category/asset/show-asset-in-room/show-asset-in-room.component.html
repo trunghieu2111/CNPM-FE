@@ -1,0 +1,42 @@
+
+<div>
+    <br><br>
+    <div style="position: relative;">
+        <span style="font-size: 27px;">Thông tin kí gửi - nhận</span>
+
+        <div nz-row style="width: 400px; position: absolute; right: 5%; top: 40px;">
+            <nz-form-label nz-col nzSpan="10" nzFor="phongid" style="font-weight: bold;">Mã phòng
+            </nz-form-label>
+            <nz-select nz-col nzSpan="14" nzShowSearch nzAllowClear
+                nzPlaceHolder="-Chọn mã phòng-" [(ngModel)]="selectedRoom" (ngModelChange)="dataChanged($event)">
+                <nz-option *ngFor="let phongid of RoomIDs" nzLabel="{{phongid}}"
+                    nzValue="{{phongid}}">
+                </nz-option>
+            </nz-select>
+        </div>
+
+        <div class="tableAsset" style="border-top: 2px solid #66CCFF; margin-top: 50px">
+            <div style="margin-top: 20px;">
+
+                <span style="font-weight: bold; font-size: 16px;">Tên tài sản:</span><br><br>
+                <div class="form-group" *ngFor="let data of dataAsset">
+                    <span style="font-size: 16px;">- {{data.tentaisan}}</span>
+                </div>
+        
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div style="position: relative; height: 50px; margin-top: 50px;">
+    <button *ngIf="Status=='Chờ kí nhận' && flagPer == 'student'" class="luu" nz-button nzType="primary" (click)="onSubmitStudent()">
+        Kí xác nhận
+    </button>
+    <button *ngIf="Status=='Chờ bàn giao' && flagPer == 'admin'" class="luu" nz-button nzType="primary" (click)="onSubmitAdmin()">
+        Kí bàn giao
+    </button>
+    <button class="back" nz-button nzType="primary" (click)="back()">
+        Trở về
+    </button>
+</div>
