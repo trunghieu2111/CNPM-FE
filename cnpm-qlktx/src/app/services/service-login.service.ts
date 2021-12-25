@@ -5,8 +5,9 @@ import { ServiceBaseService } from 'src/app/services/service-base.service';
   providedIn: 'root'
 })
 export class ServiceLogin extends ServiceBaseService{
-  flagPermission = "";
-  flagSinhvienId = "";
+  flagPermission:any = localStorage.getItem('flagPermission')?(localStorage.getItem('flagPermission')):"";
+  flagSinhvienId:any =  localStorage.getItem('flagSinhvienId')?(localStorage.getItem('flagSinhvienId')):"";
+  //localStorage.getItem('birthday')
   //flagLogin = true;
   loginStudent(params: any){
     return this.post(`auth/login`, params);

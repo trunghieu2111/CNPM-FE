@@ -26,10 +26,13 @@ export class LoginComponent implements OnInit {
     }
     this.loginService.loginStudent(params).subscribe((data) => {
       if(data.status == "success"){
+        //lần đầu vào thì nó chưa có local nên phải gán.
         this.loginService.flagPermission = data.user.role;
-        
+        localStorage.setItem('flagPermission', data.user.role);
+
         if(data.user.role == "student"){
           this.loginService.flagSinhvienId = data.user.id_student;
+          localStorage.setItem('flagSinhvienId', data.user.id_student);
         }
         //console.log("role:", data.user.role);
         this.router.navigate(['/dashboard'], { replaceUrl: true });
@@ -41,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    localStorage.clear(); 
   }
 
   // ! tồn tại

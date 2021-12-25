@@ -25,6 +25,7 @@ export class AssetListComponent implements OnInit {
 
   ngOnInit(): void {
     this.flagPer = this.loginService.flagPermission;
+    //console.log("data:",this.flagPer);
     this.loadData();
   }
   public loadData() {
