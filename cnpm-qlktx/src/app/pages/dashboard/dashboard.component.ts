@@ -26,17 +26,20 @@ export class DashboardComponent implements OnInit {
   }
 
   public loadData() {
-    this.roomService.getListRoom().subscribe((data) => {
-      this.dataRoom = data;
-      this.total = this.dataRoom.length;
+    this.roomService.getDashboard().subscribe((data) => {
+      //this.dataRoom = data;
+      this.total = data.total;
+      this.roomFull = data.full;
+      this.roomEmpty = data.empty;
     })
 
-    this.roomService.getRoomEmpty().subscribe((data) => {
-      this.dataRoomEmpty = data;
-      this.roomEmpty = this.dataRoomEmpty.length;
-    })
+    // this.roomService.getRoomEmpty().subscribe((data) => {
+    //   this.dataRoomEmpty = data;
+    //   this.roomEmpty = this.dataRoomEmpty.length;
+    // })
 
-    this.roomFull = this.total - this.roomEmpty;
+    //this.roomFull = this.total - this.roomEmpty;
+    ///console.log("data:", this.total);
 
     this.contractService.getListcontract().subscribe((data) => {
       this.contractData = data;
