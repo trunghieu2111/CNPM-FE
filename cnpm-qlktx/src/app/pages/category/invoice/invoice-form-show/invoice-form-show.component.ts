@@ -118,10 +118,10 @@ export class InvoiceFormShowComponent implements OnInit {
         chisonuoccuoi: this.submitForm.get('chisonuoccuoi')?.value,
         tinhtranghoadon: "Đã thanh toán"
       }
-      console.log("data:", params);
-      // this.invoiceService.updatebill(params).subscribe((data) => {
-      //   this._location.back();
-      // })
+      //console.log("data:", params);
+      this.invoiceService.updatebill(params).subscribe((data) => {
+        this._location.back();
+      })
 
     } else {
       for (const i in this.submitForm.controls) {
