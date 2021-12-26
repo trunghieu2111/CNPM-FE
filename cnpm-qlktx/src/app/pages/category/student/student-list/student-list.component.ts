@@ -38,8 +38,20 @@ export class StudentListComponent implements OnInit {
   }
 
   removeStudent(index: any) {
-    this.studentService.deleteStudent(index).subscribe((data) => {
-      this.loadData();
+    const ind = index;
+    //lấy id sinh viên để truyền vào User
+    this.studentService.getInfoStudentByID(ind).subscribe((data) => {
+      const idSV = data.id + "";
+      this.studentService.getInfoUserByID(idSV).subscribe((data) => {
+        const idUser = data[0]._id;
+        this.studentService.deleteUser(idUser).subscribe((data) => {
+          this.studentService.deleteStudent(ind).subscribe((data) => {
+            this.loadData();
+          });
+        });
+        console.log("test1:", idUser);
+      });
+      //console.log("test:", idSV);
     });
   }
 
