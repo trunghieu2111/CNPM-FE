@@ -27,6 +27,7 @@ export class RoomFormComponent implements OnInit {
   ) {
     this.submitForm = this.fb.group({
       id: [null, [Validators.required]],
+      sophong: [null, [Validators.required]],
       toanha: [null, Validators.required],
       tang: [null, [Validators.required]],
       sogiuong: [null, Validators.required],
@@ -49,6 +50,7 @@ export class RoomFormComponent implements OnInit {
     this.roomService.getInfoRoomByID(id).subscribe((data) => {
       this.submitForm.patchValue({
         id: data.id,
+        sophong: data.sophong,
         toanha: data.toanha,
         tang: data.tang,
         sogiuong: data.sogiuong,
@@ -67,6 +69,7 @@ export class RoomFormComponent implements OnInit {
         const params = {
           _id: this.ids,
           id: this.submitForm.get('id')?.value,
+          sophong: this.submitForm.get('sophong')?.value,
           toanha: this.submitForm.get('toanha')?.value,
           tang: this.submitForm.get('tang')?.value,
           sogiuong: this.submitForm.get('sogiuong')?.value,
@@ -80,6 +83,7 @@ export class RoomFormComponent implements OnInit {
       } else { // CREATE
         const params = {
           id: this.submitForm.get('id')?.value,
+          sophong: this.submitForm.get('sophong')?.value,
           toanha: this.submitForm.get('toanha')?.value,
           tang: this.submitForm.get('tang')?.value,
           sogiuong: this.submitForm.get('sogiuong')?.value,

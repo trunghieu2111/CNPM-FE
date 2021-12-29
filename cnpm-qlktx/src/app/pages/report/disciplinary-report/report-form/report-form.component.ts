@@ -21,6 +21,7 @@ export class ReportFormComponent implements OnInit {
   dataSV:IData[] = [];
   selectedValue = "";
   SVIDs = [] as any;
+  // TenSV = [] as any;
 
   constructor(
     private _location: Location,
@@ -52,6 +53,7 @@ export class ReportFormComponent implements OnInit {
       //console.log("test", this.dataSV);
       for(const i in this.dataSV){
         this.SVIDs.push(this.dataSV[i].id);
+        // this.TenSV.push(this.dataSV[i].hoten);
       }
       // console.log("dataID:", this.SVIDs);
     })

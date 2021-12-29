@@ -26,8 +26,10 @@
                 <thead>
                     <tr>
                         <th>Mã hợp đồng</th>
-                        <th>Mã sinh viên</th>
-                        <th>Mã phòng</th>
+                        <th>Tên sinh viên</th>
+                        <th>Tòa</th>
+                        <th>Tầng</th>
+                        <th>Số phòng</th>
                         <th>Ngày bắt đầu</th>
                         <th>Ngày kết thúc</th>
                         <th>Tình trạng</th>
@@ -37,8 +39,10 @@
                 <tbody>
                     <tr *ngFor="let data of basicTable.data">
                         <td>{{data.id}}</td>
-                        <td>{{data.sinhvienid}}</td>
-                        <td>{{data.phongid}}</td>
+                        <td>{{data.hoten}}</td>
+                        <td>{{data.toanha}}</td>
+                        <td>{{data.tang}}</td>
+                        <td>{{data.sophong}}</td>
                         <td>{{data.ngaybatdau}}</td>
                         <td>{{data.ngayketthuc}}</td>
                         <td>{{data.tinhtranghopdong}}</td>
@@ -74,8 +78,10 @@
                 <thead>
                     <tr>
                         <th>Mã hợp đồng</th>
-                        <th>Mã sinh viên</th>
-                        <th>Mã phòng</th>
+                        <th>Tên sinh viên</th>
+                        <th>Tòa</th>
+                        <th>Tầng</th>
+                        <th>Số phòng</th>
                         <th>Ngày bắt đầu</th>
                         <th>Ngày kết thúc</th>
                         <th>Tình trạng</th>
@@ -85,8 +91,10 @@
                 <tbody>
                     <tr *ngFor="let data of basicTable.data">
                         <td>{{data.id}}</td>
-                        <td>{{data.sinhvienid}}</td>
-                        <td>{{data.phongid}}</td>
+                        <td>{{data.hoten}}</td>
+                        <td>{{data.toanha}}</td>
+                        <td>{{data.tang}}</td>
+                        <td>{{data.sophong}}</td>
                         <td>{{data.ngaybatdau}}</td>
                         <td>{{data.ngayketthuc}}</td>
                         <td>{{data.tinhtranghopdong}}</td>

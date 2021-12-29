@@ -21,7 +21,7 @@
             <thead>
                 <tr>
                     <th>Mã biên bản</th>
-                    <th>Mã sinh viên</th>
+                    <th>Tên sinh viên</th>
                     <th>Nội dung</th>
                     <th>Thời gian vi phạm</th>
                     <th>Hình thức kỉ luật</th>
@@ -32,7 +32,7 @@
             <tbody>
                 <tr *ngFor="let data of basicTable.data">
                     <td>{{data.id}}</td>
-                    <td>{{data.sinhvienid}}</td>
+                    <td>{{data.hoten}}</td>
                     <td>{{data.noidungvipham}}</td>
                     <td>{{data.thoigianvipham}}</td>
                     <td>{{data.hinhthuckiluat}}</td>

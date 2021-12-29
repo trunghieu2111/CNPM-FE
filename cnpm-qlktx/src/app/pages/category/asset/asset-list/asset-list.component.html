@@ -41,7 +41,9 @@
                 <thead>
                     <tr>
                         <th>Mã tài sản</th>
-                        <th>Mã phòng</th>
+                        <th>Tòa nhà</th>
+                        <th>Tầng</th>
+                        <th>Số phòng</th>
                         <th>Tên tài sản</th>
                         <th>Tình trạng</th>
                         <th>Đơn vị tính</th>
@@ -51,7 +53,9 @@
                 <tbody>
                     <tr *ngFor="let data of basicTable.data">
                         <td>{{data.mataisai}}</td>
-                        <td>{{data.maphong}}</td>
+                        <td>{{data.toanha}}</td>
+                        <td>{{data.tang}}</td>
+                        <td>{{data.sophong}}</td>
                         <td>{{data.tentaisan}}</td>
                         <td>{{data.tinhtrang}}</td>
                         <td>{{data.donvitinh}}</td>
